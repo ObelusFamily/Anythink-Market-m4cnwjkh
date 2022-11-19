@@ -9,4 +9,11 @@ router.get('/', function(req, res, next) {
   }).catch(next);
 });
 
+// return a list of titles
+router.get('/', function(req, res, next) {
+  Item.find().distinct('titleList').then(function(titles){
+    return res.json({titles: titles});
+  }).catch(next);
+});
+
 module.exports = router;
